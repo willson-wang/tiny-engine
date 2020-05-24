@@ -5,27 +5,22 @@ import App from './App'
 import router from './router'
 import modules from './utils/register'
 import store from './store'
+import TYPES from './store/types'
+import './assets/css/normalize.css'
 
 Vue.config.productionTip = false
 modules.forEach((install) => {
   Vue.use(install)
 })
 
-const aa = {
-  age: 18
-}
-
-const bb = {
-  ...aa
-}
-
-console.log(bb)
-
 /* eslint-disable no-new */
-new Vue({
-  el: '#app',
+const instance = new Vue({
   router,
   store,
   components: { App },
   template: '<App/>'
 })
+
+store.dispatch(`app/${TYPES.GET_APP_META}`)
+
+instance.$mount('#app')

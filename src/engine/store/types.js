@@ -1,0 +1,7 @@
+const TYPES = {
+  GET_APP_META: 'GET_APP_META',
+  SET_APP_META: 'SET_APP_META',
+  CLEAR_APP_META: 'CLEAR_APP_META'
+}
+
+export default TYPES

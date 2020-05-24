@@ -8,13 +8,6 @@
 <script>
 import { mapState } from 'vuex'
 
-const a = {
-  age: 18
-}
-
-const b = {...a}
-console.log('b', b)
-
 export default {
   name: 'HelloWorld',
   data () {
@@ -25,10 +18,7 @@ export default {
   computed: {
     ...mapState('app', ['plateform'])
   },
-  methods: {},
-  mounted () {
-    console.log('this', this)
-  }
+  methods: {}
 }
 </script>
 

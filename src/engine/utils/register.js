@@ -8,27 +8,27 @@ function registerGloabalComponent (id, component) {
 }
 
 function addRouteComponent (id, routes) {
-  if (!Array.isArray(routes)) throw new Error('routes 必须是数据')
+  if (!Array.isArray(routes)) throw new Error('routes 必须是数组')
   routes.forEach((route, index) => {
-    if (!route.body || !route.body.component) throw new Error('route component必须定义在body内')
+    if (!route.body || !route.body.component) throw new Error(`${id}内的${route.name}内页路由，component必须定义在body内`)
     registerGloabalComponent(`parse-body-${id}-${route.name}-${index}`)
   })
 }
 
 function registerStore (id, storeModule) {
   const hasDefine = storeModule && Store && Store._modules
-  if (hasDefine && Store._modules.get && !Store._modules.get(id)) {
+  if (hasDefine && Store._modules.get && !Store._modules.get([id])) {
     Store.registerModule(id, storeModule)
   }
 }
 
-function registerModule (id, component) {
+export function registerModule (id, component) {
   if (id) {
     modules.push(component)
   }
 }
 
-function registerComponent (id, { component, storeModule, routes }) {
+export function registerComponent (id, { component, storeModule, routes }) {
   if (id) {
     registerGloabalComponent(id, component)
   }
@@ -41,8 +41,6 @@ function registerComponent (id, { component, storeModule, routes }) {
     addRouteComponent(id, routes)
   }
 }
-
-console.log('registerModule', registerModule, registerComponent)
 
 export default modules
 

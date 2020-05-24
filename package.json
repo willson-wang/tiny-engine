@@ -1,6 +1,6 @@
 {
   "name": "tiny-engine",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A Vue.js project",
   "author": "wangks <wangkangsen168@163.com>",
   "scripts": {
@@ -23,6 +23,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/runtime": "^7.9.6",
     "autoprefixer": "^7.1.2",
+    "axios": "^0.19.2",
     "babel-eslint": "^8.2.1",
     "babel-jest": "^21.0.2",
     "babel-loader": "^8.1.0",
