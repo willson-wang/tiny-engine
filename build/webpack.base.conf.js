@@ -2,7 +2,6 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
-const vueLoaderConfig = require('./vue-loader.conf')
 const babelOptions = require('./babel-loader-options')
 
 function resolve (dir) {
@@ -51,8 +50,7 @@ module.exports = {
       {
         test: /\.vue$/,
         use: {
-          loader: 'vue-loader',
-          options: vueLoaderConfig
+          loader: 'vue-loader'
         }
       },
       {

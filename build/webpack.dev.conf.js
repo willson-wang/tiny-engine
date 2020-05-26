@@ -10,14 +10,29 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const yargs = require('yargs')
+const {VueLoaderPlugin} = require('vue-loader')
 
 const HOST = yargs.argv.host || process.env.HOST
 const PORT = yargs.argv.port || process.env.PORT && Number(process.env.PORT)
 // console.log('HOST', HOST, PORT, yargs.argv)
 // process.exit(1)
 const devWebpackConfig = merge(baseWebpackConfig, {
+  mode: 'development',
   module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
+    rules: [
+      {
+        test: /\.(less|css)$/,
+        use: [{
+          loader: 'vue-style-loader',
+        }, {
+          loader: 'css-loader',
+        }, {
+          loader: 'postcss-loader'
+        }, {
+          loader: 'less-loader',
+        }],
+      }
+    ]
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
@@ -50,6 +65,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env')
     }),
+    new VueLoaderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
@@ -58,15 +74,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: 'index.html',
       template: 'index.html',
       inject: true
-    }),
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.dev.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ])
+    })
   ]
 })
 

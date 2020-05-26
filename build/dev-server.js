@@ -3,9 +3,9 @@ const webpack = require('webpack')
 const { argv } = require('yargs')
 const chalk = require('chalk')
 const WebpackDevServer = require('webpack-dev-server')
-const createDomain = require('webpack-dev-server/lib/util/createDomain')
-const optionsSchema = require('webpack-dev-server/lib/optionsSchema.json')
-const addDevServerEntrypoints = require('webpack-dev-server/lib/util/addDevServerEntrypoints')
+const createDomain = require('webpack-dev-server/lib/utils/createDomain')
+const optionsSchema = require('webpack-dev-server/lib/options.json')
+const addDevServerEntrypoints = require('webpack-dev-server/lib/utils/addEntries')
 
 const webpackConfig = require('./webpack.dev.conf')
 
