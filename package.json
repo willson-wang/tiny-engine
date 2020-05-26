@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node build/dev-server.js --inline --progress --colors",
     "dev:test": "webpack-dev-server --inline --progress --colors --quiet --config ./build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "start": "node build/dev-server.js --inline --progress --colors",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
