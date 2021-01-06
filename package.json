@@ -23,7 +23,7 @@
     "@babel/preset-env": "^7.9.6",
     "@babel/runtime": "^7.9.6",
     "autoprefixer": "^7.1.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-eslint": "^8.2.1",
     "babel-jest": "^21.0.2",
     "babel-loader": "^8.1.0",
